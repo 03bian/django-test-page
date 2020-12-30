@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'shopApp/base_page.html' %}
+    {% load static %}
+        {% block body_block %}
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                {% if registered %}
+                <p class="lead">Thanks you for registering!</p>
+                {% else %}
+                <h1 class="display-4">Register here</h1>
+                <p class="lead">This is register page</p>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ userbasicinfo_form.as_p }}
+                    {{ useradditionalinfo_form.as_p }}
+                    <input type="submit" name='' value='Register'>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+        {% endblock %}
